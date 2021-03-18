@@ -19,7 +19,12 @@ describe('EmployeeListComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('EmployeeListComponent is created', () => {
     expect(component).toBeTruthy();
   });
+
+  it('EmployeeListComponent has a paragraph', () => {
+    const componentDom: HTMLElement = fixture.nativeElement;
+    expect(componentDom.querySelector('p').textContent).toContain('employee-list works!')
+  })
 });
