@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../employee.service';
-import { Employee } from '../model/employee';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'employee-list',
@@ -9,13 +9,27 @@ import { Employee } from '../model/employee';
 })
 export class EmployeeListComponent implements OnInit {
 
-  employees: Employee[];
+  columnDefs = [
+    { headerName: 'Name', field: 'name' },
+    { headerName: 'Dept', field: 'dept' },
+    { headerName: 'Hired', field: 'hired' },
+    { headerName: 'Terminated', field: 'terminated' }
+  ]
+
+  rowData: any
 
   constructor(
     private employeeService: EmployeeService
   ) {}
 
   ngOnInit() {
-    this.employees = this.employeeService.getEmployees();
+    this.rowData = this.employeeService.getEmployees().map(el => {
+      return {
+        'name': el.name,
+        'dept': el.dept,
+        'hired': new DatePipe("en-US").transform(el.hired, 'M/d/yyyy'),
+        'terminated': new DatePipe("en-US").transform(el.terminated, 'M/d/yyyy')
+      }
+    });
   }
 }

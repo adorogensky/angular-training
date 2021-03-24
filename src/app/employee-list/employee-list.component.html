@@ -1,17 +1,6 @@
-<p>employee-list works!</p>
-<table>
-    <thead>
-        <th>Name:</th>
-        <th>Dept:</th>
-        <th>Hired:</th>
-        <th>Terminated:</th>
-    </thead>
-    <tbody>
-        <tr *ngFor="let employee of employees">
-            <td>{{employee.name}}</td>
-            <td>{{employee.dept}}</td>
-            <td>{{employee.hired | date: 'M/d/yyyy'}}</td>
-            <td>{{employee.terminated | date: 'M/d/yyyy'}}</td>
-        </tr>
-    </tbody>
-</table>
+<ag-grid-angular
+    style="width: 800px; height: 190px;"
+    class="ag-theme-alpine"
+    [rowData]="rowData"
+    [columnDefs]="columnDefs">
+</ag-grid-angular>
