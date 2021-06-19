@@ -1,6 +1,6 @@
 <ag-grid-angular
   [columnDefs]="columns"
-  [rowData]="rows"
+  [rowData]="rows | async"
   class="ag-theme-alpine"
   style="width: 50%; height: 200px;">
 </ag-grid-angular>
