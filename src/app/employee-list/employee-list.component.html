@@ -1,6 +1,9 @@
 <ag-grid-angular
+    #agGrid
     style="width: 800px; height: 190px;"
     class="ag-theme-alpine"
     [rowData]="rowData"
-    [columnDefs]="columnDefs">
+    [columnDefs]="columnDefs"
+    rowSelection="multiple">
 </ag-grid-angular>
+<button (click)="getSelectedRows()">Get Selected Rows</button>

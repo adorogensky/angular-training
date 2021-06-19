@@ -11,21 +11,24 @@ export class EmployeeService {
 
   getEmployees(): Employee[] {
     return [{
-      name: "Alex Dorogensky",
-      dept: "System Engineering",
+      id: 1,
+      name: 'Alex Dorogensky',
+      dept: 'System Engineering',
       hired: new Date('3/18/2021'),
       terminated: null
 
     }, {
-      name: "Nicole Mayo",
-      dept: "Marketing",
+      id: 2,
+      name: 'Nicole Mayo',
+      dept: 'Marketing',
       hired: new Date('1/1/2015'),
       terminated: null
     }, {
-      name: "Max Lechiman",
-      dept: "Accounting",
+      id: 3,
+      name: 'Max Lechiman',
+      dept: 'Accounting',
       hired: new Date('5/7/2018'),
       terminated: new Date('2/15/2021')
-    }]
+    }];
   }
 }

@@ -25,6 +25,6 @@ describe('EmployeeListComponent', () => {
 
   it('EmployeeListComponent has a paragraph', () => {
     const componentDom: HTMLElement = fixture.nativeElement;
-    expect(componentDom.querySelector('p').textContent).toContain('employee-list works!')
-  })
+    expect(componentDom.querySelector('p').textContent).toContain('employee-list works!');
+  });
 });
