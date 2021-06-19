@@ -36,7 +36,7 @@ export class EmployeeListComponent implements OnInit {
   }
 
   getSelectedRows(): void {
-    const selectedRowIds = this.agGrid.api.getSelectedNodes().map(node => node.data.id);
+    const selectedRowIds = this.agGrid.api.getSelectedNodes().map(node => node.data.name);
     alert(selectedRowIds);
   }
 }
