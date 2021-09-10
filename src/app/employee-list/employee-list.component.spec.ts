@@ -23,8 +23,8 @@ describe('EmployeeListComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('EmployeeListComponent has a paragraph', () => {
-    const componentDom: HTMLElement = fixture.nativeElement;
-    expect(componentDom.querySelector('p').textContent).toContain('employee-list works!');
+  it('EmployeeListComponent has an ag-grid-angular table', () => {
+    const dom = fixture.nativeElement;
+    expect(dom.querySelector('ag-grid-angular')).toBeTruthy();
   });
 });
