@@ -1,10 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { EmployeeListComponent } from './employee-list.component';
 import { EmployeeService } from '../employee.service';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AgGridModule } from 'ag-grid-angular';
-import {createComponentFactory, Spectator} from "@ngneat/spectator";
+import { createComponentFactory, Spectator } from '@ngneat/spectator';
 
 describe('EmployeeListComponent', () => {
   let spectator: Spectator<EmployeeListComponent>;
@@ -21,9 +19,9 @@ describe('EmployeeListComponent', () => {
 
   beforeEach(() => {
     spectator = createComponent();
-    spectator.detectChanges();
     component = spectator.fixture.componentInstance;
     componentDom = spectator.fixture.nativeElement;
+    spectator.detectChanges();
     getEmployeesSpy = spyOn(employeeService, 'getEmployees').and.returnValue([{
         id: 1,
         name: 'Alex Dorogensky',
@@ -44,11 +42,15 @@ describe('EmployeeListComponent', () => {
   });
 
   it('has an ag-grid-angular table', () => {
-    expect(componentDom.querySelector('ag-grid-angular')).toBeTruthy();
+    expect(spectator.query('ag-grid-angular')).toBeTruthy();
   });
 
-  it('has a "Name" table column', () => {
-    expect(componentDom.querySelector('.ag-header').textContent).toContain('Name');
-    expect(componentDom.querySelector('span[class = ag-header-cell-text]').textContent).toContain('Name');
+  it('have defined table columns', () => {
+    // .ag-header
+
+    // wtf this works
+    expect(componentDom.querySelectorAll('.ag-header-cell-text')[0]).toContainText('Name');
+    // and this doesn't ???
+    expect(spectator.queryAll('.ag-header-cell-text')[0]).toContainText('Name');
   });
 });
