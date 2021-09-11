@@ -4,26 +4,26 @@ import { EmployeeListComponent } from './employee-list.component';
 import { EmployeeService } from '../employee.service';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AgGridModule } from 'ag-grid-angular';
+import {createComponentFactory, Spectator} from "@ngneat/spectator";
 
 describe('EmployeeListComponent', () => {
+  let spectator: Spectator<EmployeeListComponent>;
   let component: EmployeeListComponent;
-  let fixture: ComponentFixture<EmployeeListComponent>;
+  let componentDom;
   const employeeService = new EmployeeService();
   let getEmployeesSpy;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-      imports: [ AgGridModule ],
-      declarations: [ EmployeeListComponent ]
-    })
-    .compileComponents();
+  const createComponent = createComponentFactory({
+    component: EmployeeListComponent,
+    imports: [ AgGridModule ],
+    schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EmployeeListComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    spectator = createComponent();
+    spectator.detectChanges();
+    component = spectator.fixture.componentInstance;
+    componentDom = spectator.fixture.nativeElement;
     getEmployeesSpy = spyOn(employeeService, 'getEmployees').and.returnValue([{
         id: 1,
         name: 'Alex Dorogensky',
@@ -44,13 +44,11 @@ describe('EmployeeListComponent', () => {
   });
 
   it('has an ag-grid-angular table', () => {
-    const dom = fixture.nativeElement;
-    expect(dom.querySelector('ag-grid-angular')).toBeTruthy();
+    expect(componentDom.querySelector('ag-grid-angular')).toBeTruthy();
   });
 
   it('has a "Name" table column', () => {
-    const dom = fixture.nativeElement;
-    expect(dom.querySelector('.ag-header').textContent).toContain('Name');
-    // TODO: more precise selector is not working, e.g. 'span[class = ag-header-cell-text][textContent = Name]'
+    expect(componentDom.querySelector('.ag-header').textContent).toContain('Name');
+    expect(componentDom.querySelector('span[class = ag-header-cell-text]').textContent).toContain('Name');
   });
 });
