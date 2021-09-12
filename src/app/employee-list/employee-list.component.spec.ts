@@ -13,8 +13,7 @@ describe('EmployeeListComponent', () => {
 
   const createComponent = createComponentFactory({
     component: EmployeeListComponent,
-    imports: [ AgGridModule ],
-    schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+    imports: [ AgGridModule ]
   });
 
   beforeEach(() => {
