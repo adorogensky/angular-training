@@ -40,4 +40,10 @@
   npm audit
   ```
 
+# What makes for a great technology
+* Performance a.k.a speed of execution, tests included
+* Reliability
+* Simple concepts and thorough documentation
+* Ease of use
+* Integration with IDE
 

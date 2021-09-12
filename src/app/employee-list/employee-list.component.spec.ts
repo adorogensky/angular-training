@@ -48,9 +48,17 @@ describe('EmployeeListComponent', () => {
   it('have defined table columns', () => {
     // .ag-header
 
-    // wtf this works
+    // this will work
+    // { root: true } is necessary to enable native search starting from the document
+    // otherwise the search will be conducted on the debugElement and it won't go introspect the ag-grid-angular element
+    const columnHeaders = spectator.queryAll('.ag-header-cell-text', { root: true });
+
+    expect(columnHeaders[0]).toContainText('Name');
+    expect(columnHeaders[1]).toContainText('Dept');
+    expect(columnHeaders[2]).toContainText('Hired');
+    expect(columnHeaders[3]).toContainText('Terminated');
+
+    // this will work too
     expect(componentDom.querySelectorAll('.ag-header-cell-text')[0]).toContainText('Name');
-    // and this doesn't ???
-    expect(spectator.queryAll('.ag-header-cell-text')[0]).toContainText('Name');
   });
 });
