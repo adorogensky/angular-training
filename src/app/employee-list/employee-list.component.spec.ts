@@ -1,7 +1,7 @@
 import { EmployeeListComponent } from './employee-list.component';
 import { EmployeeService } from '../employee.service';
 import { AgGridModule } from 'ag-grid-angular';
-import { createComponentFactory, mockProvider, Spectator } from '@ngneat/spectator';
+import { byText, createComponentFactory, mockProvider, Spectator } from '@ngneat/spectator';
 
 describe('EmployeeListComponent', () => {
   let spectator: Spectator<EmployeeListComponent>;
@@ -69,6 +69,10 @@ describe('EmployeeListComponent', () => {
 
     // this will work too
     expect(componentDom.querySelectorAll('.ag-header-cell-text')[0]).toContainText('Name');
+  });
+
+  it('should show "Get Selected Rows" button', () => {
+    expect(spectator.query(byText('Get Selected Rows'))).toBeInstanceOf(HTMLButtonElement);
   });
 
   it('have however many rows returned by the service', () => {
