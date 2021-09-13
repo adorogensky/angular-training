@@ -13,7 +13,7 @@ export class EmployeeListComponent implements OnInit {
 
   columnDefs = [
     { headerName: 'Name', field: 'name', checkboxSelection: true },
-    { headerName: 'Dept ', field: 'dept' },
+    { headerName: 'Dept', field: 'dept' },
     { headerName: 'Hired', field: 'hired' },
     { headerName: 'Terminated', field: 'terminated' }
   ];
