@@ -71,10 +71,6 @@ describe('EmployeeListComponent', () => {
     expect(componentDom.querySelectorAll('.ag-header-cell-text')[0]).toContainText('Name');
   });
 
-  it('should show "Get Selected Rows" button', () => {
-    expect(spectator.query(byText('Get Selected Rows'))).toBeInstanceOf(HTMLButtonElement);
-  });
-
   it('have however many rows returned by the service', () => {
     const cellValues = spectator.queryAll('.ag-cell-value', { root: true });;
     expect(cellValues).toContainText(stubbedEmployees[0].name);
@@ -93,5 +89,17 @@ describe('EmployeeListComponent', () => {
     expect(rows[1]).toHaveAttribute('dept', stubbedEmployees[1].dept);
     expect(rows[1]).toHaveAttribute('hired', employee2Hired);
     expect(rows[1]).toHaveAttribute('terminated', null);
+  });
+
+  it('should show "Get Selected Rows" button', () => {
+    expect(spectator.query(byText('Get Selected Rows'))).toBeInstanceOf(HTMLButtonElement);
+  });
+
+  it('should show a popup with selected row information when button is clicked', () => {
+    spyOn(window, 'alert');
+    spectator.click(byText(stubbedEmployees[0].name));
+    spectator.click(byText('Get Selected Rows'));
+    spectator.detectChanges();
+    expect(window.alert).toHaveBeenCalledWith([stubbedEmployees[0].name]);
   });
 });
