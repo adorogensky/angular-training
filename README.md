@@ -39,6 +39,10 @@
   ```
   npm audit
   ```
+* add material ui
+  ```
+  ng add @angular/material
+  ```
 
 # What makes for a good technology
 * Performance a.k.a speed of execution, tests included = can I use this technology now?
@@ -58,6 +62,7 @@
       - poor performance
       - more defects
       - longer release cycles
+      - breaking changes
 
 # Why Angular is a bad technology?
 * Complexity
