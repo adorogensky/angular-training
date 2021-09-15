@@ -43,6 +43,10 @@
   ```
   ng add @angular/material
   ```
+* generate a component
+  ```
+  ng g c add-employee
+  ```
 
 # What makes for a good technology
 * Performance a.k.a speed of execution, tests included = can I use this technology now?

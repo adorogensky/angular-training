@@ -113,4 +113,8 @@ describe('EmployeeListComponent', () => {
     expect(component.rowData).toHaveLength(0);
     expect(spectator.query(byText('Delete'))).toBeFalsy();
   });
+
+  it('should have "Add Employee" button', () => {
+    expect(spectator.query(byText('Add Employee'))).toBeTruthy();
+  });
 });
