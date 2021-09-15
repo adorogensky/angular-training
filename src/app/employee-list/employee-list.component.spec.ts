@@ -8,7 +8,6 @@ describe('EmployeeListComponent', () => {
   let component: EmployeeListComponent;
   let componentDom;
   const employeeService = new EmployeeService();
-  let getEmployeesSpy;
   const employee1Hired = '3/18/2021';
   const employee2Hired = '1/1/2015';
 
@@ -33,11 +32,11 @@ describe('EmployeeListComponent', () => {
   });
 
   beforeEach(() => {
-    getEmployeesSpy = spyOn(employeeService, 'getEmployees').and.returnValue(stubbedEmployees);
+    spyOn(employeeService, 'getEmployees').and.returnValue(stubbedEmployees);
     spectator = createComponent();
+    spectator.detectChanges();
     component = spectator.fixture.componentInstance;
     componentDom = spectator.fixture.nativeElement;
-    spectator.detectChanges();
   });
 
   it('is created', () => {
@@ -91,15 +90,25 @@ describe('EmployeeListComponent', () => {
     expect(rows[1]).toHaveAttribute('terminated', null);
   });
 
-  it('should show "Get Selected Rows" button', () => {
-    expect(spectator.query(byText('Get Selected Rows'))).toBeInstanceOf(HTMLButtonElement);
+  it('should show "Delete" button', () => {
+    expect(spectator.query(byText('Delete'))).toBeInstanceOf(HTMLButtonElement);
   });
 
-  it('should show a popup with selected row information when button is clicked', () => {
-    spyOn(window, 'alert');
+  it('should show delete one selected row', () => {
+    const numOfRows = component.agGrid.rowData.length;
+    expect(spectator.query(byText(stubbedEmployees[0].name))).toBeTruthy();
     spectator.click(byText(stubbedEmployees[0].name));
-    spectator.click(byText('Get Selected Rows'));
+    spectator.click(byText('Delete'));
     spectator.detectChanges();
-    expect(window.alert).toHaveBeenCalledWith([stubbedEmployees[0].name]);
+    expect(spectator.query(byText(stubbedEmployees[0].name))).toBeFalsy();
+    expect(component.rowData).toHaveLength(numOfRows - 1);
+  });
+
+  it('should show delete all selected rows', () => {
+    expect(component.agGrid.rowData.length).toBeGreaterThan(0);
+    component.agGrid.api.selectAll();
+    spectator.click(byText('Delete'));
+    spectator.detectChanges();
+    expect(component.rowData).toHaveLength(0);
   });
 });

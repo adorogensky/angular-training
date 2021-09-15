@@ -27,6 +27,7 @@ export class EmployeeListComponent implements OnInit {
   ngOnInit(): void {
     this.rowData = this.employeeService.getEmployees().map(el => {
       return {
+        id: el.id,
         name: el.name,
         dept: el.dept,
         hired: new DatePipe('en-US').transform(el.hired, 'M/d/yyyy'),
@@ -35,8 +36,10 @@ export class EmployeeListComponent implements OnInit {
     });
   }
 
-  getSelectedRows(): void {
-    const selectedRowIds = this.agGrid.api.getSelectedNodes().map(node => node.data.name);
-    alert(selectedRowIds);
+  deleteSelectedRows(): void {
+    const selectedRowIds = this.agGrid.api.getSelectedNodes().map(node => node.data.id);
+    this.rowData = this.rowData.filter(
+      obj => !selectedRowIds.includes(obj.id)
+    );
   }
 }
