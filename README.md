@@ -40,10 +40,28 @@
   npm audit
   ```
 
-# What makes for a great technology
-* Performance a.k.a speed of execution, tests included
-* Reliability
-* Simple concepts and thorough documentation
-* Ease of use
+# What makes for a good technology
+* Performance a.k.a speed of execution, tests included = can I use this technology now?
+* Scope = in how many different environments can this technology be used?
+* Simplicity a.k.a ease of use = 
+     simple concepts; 
+     comprehensive but comprehensible documentation;
 * Integration with IDE
+* Adoption in Tech Community
+* Open Source Licensing
+* Availability and Licensing of tools and Integration Technologies
+
+- complexity
+    - less people who understand the technology
+      - lower adoption scalability
+      - worse documentation
+      - poor performance
+      - more defects
+      - longer release cycles
+
+# Why Angular is a bad technology?
+* Complexity
+  * many concepts that don't make up for a coherent picture, i.e. why do i need detectChanges() if changes detection is enabled by default
+* Poor documentation:
+  * change detection mechanism, wtf is detectChanges() supposed to do?
 
