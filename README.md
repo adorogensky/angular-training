@@ -66,7 +66,8 @@
 
 # Why Angular is a bad technology?
 * Complexity
-  * many concepts that don't make up for a coherent picture, i.e. why do i need detectChanges() if changes detection is enabled by default
+  * many concepts that don't make up for a coherent picture, i.e. why do i need detectChanges() if changes detection is enabled by default. sometimes i need detectChanges() sometimes i dont
 * Poor documentation:
-  * change detection mechanism, wtf is detectChanges() supposed to do?
+  * change detection mechanism, wtf is detectChanges() supposed to do? where is the official documentation?
 
+ 

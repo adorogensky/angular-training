@@ -90,8 +90,8 @@ describe('EmployeeListComponent', () => {
     expect(rows[1]).toHaveAttribute('terminated', null);
   });
 
-  it('should show "Delete" button', () => {
-    expect(spectator.query(byText('Delete'))).toBeInstanceOf(HTMLButtonElement);
+  it('should NOT show "Delete" button', () => {
+    expect(spectator.query(byText('Delete'))).toBeFalsy();
   });
 
   it('should show delete one selected row', () => {
@@ -104,11 +104,13 @@ describe('EmployeeListComponent', () => {
     expect(component.rowData).toHaveLength(numOfRows - 1);
   });
 
-  it('should show delete all selected rows', () => {
+  it('should show delete all selected rows and NOT show "Delete" button', () => {
     expect(component.agGrid.rowData.length).toBeGreaterThan(0);
     component.agGrid.api.selectAll();
+    spectator.detectChanges();
     spectator.click(byText('Delete'));
     spectator.detectChanges();
     expect(component.rowData).toHaveLength(0);
+    expect(spectator.query(byText('Delete'))).toBeFalsy();
   });
 });

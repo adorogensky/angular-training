@@ -6,4 +6,4 @@
     [columnDefs]="columnDefs"
     rowSelection="multiple">
 </ag-grid-angular>
-<button (click)="deleteSelectedRows()">Delete</button>
+<button *ngIf="agGrid.api?.getSelectedRows().length > 0" (click)="deleteSelectedRows()">Delete</button>
