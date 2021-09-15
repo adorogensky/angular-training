@@ -8,6 +8,7 @@ import { EmployeeService } from './employee.service';
 import { AgGridModule } from 'ag-grid-angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { AddEmployeeComponent } from './add-employee/add-employee.component';
     BrowserModule,
     AppRoutingModule,
     AgGridModule.withComponents([]),
+    MatDialogModule,
     BrowserAnimationsModule
   ],
   providers: [EmployeeService],

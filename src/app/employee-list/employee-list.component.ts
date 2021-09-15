@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { EmployeeService } from '../employee.service';
 import { DatePipe } from '@angular/common';
 import { AgGridAngular } from 'ag-grid-angular';
+import { MatDialog } from '@angular/material/dialog';
+import { AddEmployeeComponent } from '../add-employee/add-employee.component';
 
 @Component({
   selector: 'app-employee-list',
@@ -21,7 +23,8 @@ export class EmployeeListComponent implements OnInit {
   rowData: any;
 
   constructor(
-    private employeeService: EmployeeService
+    private employeeService: EmployeeService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -36,10 +39,14 @@ export class EmployeeListComponent implements OnInit {
     });
   }
 
-  deleteSelectedRows(): void {
+  deleteSelectedRows() {
     const selectedRowIds = this.agGrid.api.getSelectedNodes().map(node => node.data.id);
     this.rowData = this.rowData.filter(
       obj => !selectedRowIds.includes(obj.id)
     );
+  }
+
+  showAddEmployeeDialog() {
+    this.dialog.open(AddEmployeeComponent);
   }
 }

@@ -2,6 +2,8 @@ import { EmployeeListComponent } from './employee-list.component';
 import { EmployeeService } from '../employee.service';
 import { AgGridModule } from 'ag-grid-angular';
 import { byText, createComponentFactory, mockProvider, Spectator } from '@ngneat/spectator';
+import { AddEmployeeComponent } from '../add-employee/add-employee.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 describe('EmployeeListComponent', () => {
   let spectator: Spectator<EmployeeListComponent>;
@@ -27,7 +29,7 @@ describe('EmployeeListComponent', () => {
 
   const createComponent = createComponentFactory({
     component: EmployeeListComponent,
-    imports: [ AgGridModule ],
+    imports: [ AgGridModule, MatDialogModule ],
     providers: [ mockProvider(EmployeeService, employeeService) ]
   });
 
@@ -116,5 +118,11 @@ describe('EmployeeListComponent', () => {
 
   it('should have "Add Employee" button', () => {
     expect(spectator.query(byText('Add Employee'))).toBeTruthy();
+  });
+
+  it('should show a modal for add-employee component when "Add Employee" button is clicked',  () => {
+    spyOn(component.dialog, 'open');
+    spectator.click(byText('Add Employee'));
+    expect(component.dialog.open).toHaveBeenCalledWith(AddEmployeeComponent);
   });
 });
