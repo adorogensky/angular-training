@@ -55,9 +55,15 @@
      simple concepts; 
      comprehensive but comprehensible documentation;
 * Integration with IDE
+* How easily is it extensible?
 * Adoption in Tech Community
 * Open Source Licensing
 * Availability and Licensing of tools and Integration Technologies
+
+- complexity: how much does memorization do the technology require, e.g. createComponent signature
+- simplicty: less memorization, more deduction
+- complexity: confusion, spectator.component vs spectator.fixture.componentInstance
+- spectator: can i query angular components from the DOM, e.g. a MatLabel?
 
 - complexity
     - less people who understand the technology

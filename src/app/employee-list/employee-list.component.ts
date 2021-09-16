@@ -47,6 +47,10 @@ export class EmployeeListComponent implements OnInit {
   }
 
   showAddEmployeeDialog() {
-    this.dialog.open(AddEmployeeComponent);
+    this.dialog.open(AddEmployeeComponent, {
+      height: '75%',
+      width: '75%',
+      hasBackdrop: false
+    });
   }
 }
