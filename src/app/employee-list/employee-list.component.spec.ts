@@ -123,6 +123,6 @@ describe('EmployeeListComponent', () => {
   it('should show a modal for add-employee component when "Add Employee" button is clicked',  () => {
     spyOn(component.dialog, 'open');
     spectator.click(byText('Add Employee'));
-    expect(component.dialog.open).toHaveBeenCalledWith(AddEmployeeComponent);
+    expect(component.dialog.open).toHaveBeenCalledWith(AddEmployeeComponent, jasmine.any(Object));
   });
 });
