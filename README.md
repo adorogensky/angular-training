@@ -47,6 +47,15 @@
   ```
   ng g c add-employee
   ```
+* convert angular project from css to scss (angular.json)
+```aidl
+"schematics": {
+    "@schematics/angular:component": {
+        "style": "scss"
+    }
+ }
+```
+
 
 # What makes for a good technology
 * Performance a.k.a speed of execution, tests included = can I use this technology now?
@@ -79,5 +88,6 @@
   * many concepts that don't make up for a coherent picture, i.e. why do i need detectChanges() if changes detection is enabled by default. sometimes i need detectChanges() sometimes i dont
 * Poor documentation:
   * change detection mechanism, wtf is detectChanges() supposed to do? where is the official documentation?
+* Many breaking changes from version to version, don't really care about users
 
  
