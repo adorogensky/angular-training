@@ -2,6 +2,8 @@ import { AddEmployeeComponent } from './add-employee.component';
 import { byText, createComponentFactory, Spectator} from '@ngneat/spectator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import {MatSelect, MatSelectModule} from '@angular/material/select';
+import {MatOptionModule} from "@angular/material/core";
 
 describe('AddEmployeeComponent', () => {
   let component: AddEmployeeComponent;
@@ -10,7 +12,7 @@ describe('AddEmployeeComponent', () => {
 
   const createComponent = createComponentFactory({
     component: AddEmployeeComponent,
-    imports: [ MatFormFieldModule, MatInputModule ]
+    imports: [ MatFormFieldModule, MatInputModule, MatSelectModule, MatOptionModule ]
   });
 
   beforeEach(() => {
@@ -42,5 +44,10 @@ describe('AddEmployeeComponent', () => {
     expect(lastNameInputHtml).toHaveAttribute('matInput');
     const lastNameLabel = spectator.query(byText('Last Name'));
     expect(lastNameLabel).toExist();
+  });
+
+  it('should have a department dropdown', () => {
+    const deptSelect = spectator.query('#dept');
+    expect(deptSelect).toBeInstanceOf(MatSelect);
   });
 });

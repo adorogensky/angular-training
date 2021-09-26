@@ -56,38 +56,12 @@
  }
 ```
 
-
-# What makes for a good technology
-* Performance a.k.a speed of execution, tests included = can I use this technology now?
-* Scope = in how many different environments can this technology be used?
-* Simplicity a.k.a ease of use = 
-     simple concepts; 
-     comprehensive but comprehensible documentation;
-* Integration with IDE
-* How easily is it extensible?
-* Adoption in Tech Community
-* Open Source Licensing
-* Availability and Licensing of tools and Integration Technologies
-
-- complexity: how much does memorization do the technology require, e.g. createComponent signature
-- simplicty: less memorization, more deduction
-- complexity: confusion, spectator.component vs spectator.fixture.componentInstance
-- spectator: can i query angular components from the DOM, e.g. a MatLabel?
-
-- complexity
-    - less people who understand the technology
-      - lower adoption scalability
-      - worse documentation
-      - poor performance
-      - more defects
-      - longer release cycles
-      - breaking changes
-
 # Why Angular is a bad technology?
 * Complexity
   * many concepts that don't make up for a coherent picture, i.e. why do i need detectChanges() if changes detection is enabled by default. sometimes i need detectChanges() sometimes i dont
+  * takes 20s to rebuild a simple app with a simple change
 * Poor documentation:
   * change detection mechanism, wtf is detectChanges() supposed to do? where is the official documentation?
-* Many breaking changes from version to version, don't really care about users
+* Too many breaking changes from version to version. Do maintainers really care about the users?
 
  

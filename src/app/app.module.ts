@@ -11,6 +11,8 @@ import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import {MatSelectModule} from "@angular/material/select";
+import {MatOptionModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { MatInputModule } from '@angular/material/input';
     MatDialogModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule,
+    MatOptionModule
   ],
   providers: [EmployeeService],
   bootstrap: [AppComponent]
