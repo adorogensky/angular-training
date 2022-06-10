@@ -14,7 +14,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     interval(3000).pipe().subscribe(() => {
-      this.author.name = 'Alex';
+      this.author = {
+        name: 'Alex'
+      };
     });
   }
 }
