@@ -22,4 +22,27 @@ describe('HelloWorldComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should NOT have "button was clicked!" text if button was never clicked', () => {
+    const p = fixture.debugElement.query(
+      dl => dl.name === 'p' && dl.nativeElement.textContent === 'button was clicked!'
+    );
+    expect(p).toBeFalsy();
+  });
+
+  it('should have "button was clicked!" text when button was clicked', () => {
+    const button = fixture.debugElement.query(
+      dl => dl.name === 'input' && dl.nativeElement.value === 'Click me!'
+    );
+
+    expect(button).toBeTruthy();
+    button.nativeElement.click();
+    fixture.detectChanges();
+
+    const p = fixture.debugElement.query(
+      dl => dl.name === 'p' && dl.nativeElement.textContent === 'button was clicked!'
+    );
+
+    expect(p).toBeTruthy();
+  });
 });
