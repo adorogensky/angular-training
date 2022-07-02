@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HelloWorldComponent implements OnInit {
 
+  clickCount = 0;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  onButtonClick(): void {
+    this.clickCount++;
+  }
 }

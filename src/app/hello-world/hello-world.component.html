@@ -1,1 +1,4 @@
 <p>hello-world works!</p>
+<p *ngIf="clickCount === 1">button was clicked!</p>
+<p *ngIf="clickCount > 1">button was clicked {{clickCount}} times!</p>
+<input type="button" value="Click me!" (click)="onButtonClick()">
