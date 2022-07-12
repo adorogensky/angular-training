@@ -26,12 +26,7 @@
   </div>
 
   <div class="card-container">
-    <app-card title="Card 1"></app-card>
-    <app-card title="Card 2"></app-card>
-    <app-card title="Card 3"></app-card>
-    <app-card title="Card 4"></app-card>
-    <app-card title="Card 5"></app-card>
-    <app-card title="Card 6"></app-card>
+    <app-card *ngFor="let i of [1, 2, 3, 4, 5, 6]" title="Card {{i}}"></app-card>
   </div>
 
 </div>
